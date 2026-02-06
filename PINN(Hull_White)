@@ -1,5 +1,3 @@
-# Hull-White PINN Implementation
-
 ```python
 import torch
 import torch.nn as nn
