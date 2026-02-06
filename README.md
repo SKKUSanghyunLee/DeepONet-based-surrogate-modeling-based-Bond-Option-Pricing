@@ -1,2 +1,3 @@
-# DeepONet-based-surrogate-modeling-Bond-Option-Pricing
-DeepONet based surrogate modeling Bond Option Pricing
+# DeepONet-Based Surrogate Modeling for Bond Option Pricing
+DeepONet-Based Surrogate Modeling for Bond Option Pricing
+
