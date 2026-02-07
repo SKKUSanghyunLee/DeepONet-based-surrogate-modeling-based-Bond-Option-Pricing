@@ -139,7 +139,7 @@ def get_yield_at_t_torch(t_tensor, maturities_tensor, yields_tensor):
     y_interpolated = y_lower + weight * (y_upper - y_lower)
     return y_interpolated.unsqueeze(1)
 
-class PINN_HighDim(nn.Module):
+class PINN(nn.Module):
     def __init__(self, input_dim, hidden_dim=256, n_layers=6):
         super().__init__()
         layers = [nn.Linear(input_dim, hidden_dim), nn.Tanh()]
@@ -174,7 +174,7 @@ IDX_YIELDS_START = 6
 loss_fn = nn.MSELoss()
 
 torch.manual_seed(SEED)
-model = PINN_HighDim(input_dim=input_dim_pinn).to(device)
+model = HighDim(input_dim=input_dim_pinn).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=3e-4) 
 scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=100, T_mult=2, eta_min=1e-7)
 
@@ -348,4 +348,5 @@ print("="*50)
 print(f"FINAL PINN RESULTS (Hull-White)")
 print(f"MSE: {mse:.8f}")
 print(f"R2: {r2:.4f}")
+
 print("="*50)
